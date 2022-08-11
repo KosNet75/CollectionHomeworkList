@@ -11,7 +11,7 @@ public class Main {
     Scanner scanner = new Scanner(System.in);
     Collections.addAll(list, "Хлеб", "Бородинский хлеб", "Крупа гречневая", "Овсяная крупа");
 
-    System.out.print("Уже есть в списке: \n\n");
+    System.out.println("\nУже есть в списке: \n");
 
     for (String s : list) {
       System.out.println(s);
@@ -19,15 +19,17 @@ public class Main {
 
     while (true) {
       System.out.println(
-          "\n1. добаваить к списку\n" + "2. удалить из списка\n" + "3. поиск по списку\n"
+          "\n1. добавить к списку\n" + "2. удалить из списка\n" + "3. поиск по списку\n"
               + "4. показать список\n");
+
       String choice = scanner.nextLine();
 
       switch (choice) {
         case "1" -> {
-          System.out.print("Введите что вы хотите добавить в список? ");
+          System.out.print("Какую покупку вы хотите добавить в список? ");
           String variable = scanner.nextLine();
           list.add(variable);
+          System.out.print("Итого в списке покупок: " + list.size());
 
         }
 
@@ -35,7 +37,11 @@ public class Main {
           System.out.print("Введите что вы хотите удалить из списка? ");
           String variable = scanner.nextLine();
 
-          list.remove(variable);
+
+          if (!list.remove(variable)){
+            System.out.print("Такого названия нет в списке!\n");
+          }else System.out.println("Из списка удален: " + variable);
+          System.out.print("Итого в списке покупок: " + list.size());
         }
 
         case "3" -> {
