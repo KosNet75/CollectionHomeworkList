@@ -40,7 +40,7 @@ public class Main {
           } else {
             System.out.println("Из списка удален: " + variable);
           }
-          System.out.print("Итого в списке покупок: " + list.size());
+          System.out.println("Итого в списке покупок: " + list.size());
         }
         case "3" -> {
           System.out.print("поиск по списку: ");
@@ -55,7 +55,7 @@ public class Main {
           }
         }
         case "4" -> {
-          System.out.print("Ваш список: \n");
+          System.out.println("Ваш список: " + list.size());
           for (String s : list) {
             System.out.println(s);
           }
