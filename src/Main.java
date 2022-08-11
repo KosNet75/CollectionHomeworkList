@@ -41,11 +41,11 @@ public class Main {
         case "3" -> {
           System.out.print("поиск по списку: ");
           String variable = scanner.nextLine();
-          for (int i = 0; i < list.size(); i++) {
-            String[] words = list.get(i).split(" ");
+          for (String s : list) {
+            String[] words = s.split(" ");
             for (String word : words) {
               if (word.equalsIgnoreCase(variable)) {
-                System.out.println("Найдено: " + list.get(i));
+                System.out.println("Найдено: " + s);
               }
             }
           }
