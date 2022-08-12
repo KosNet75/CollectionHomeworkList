@@ -37,22 +37,25 @@ public class Main {
           String variable = scanner.nextLine();
           String str = String.valueOf(variable);
 
-          if (!list.remove(variable)) {
-            System.out.print("Такого названия нет в списке!\n");
-          } else {
+          if (list.remove(variable)) {
+            //    System.out.print("Такого названия нет в списке!\n");
             System.out.println("Из списка удален: " + variable);
           }
-          System.out.println("Итого в списке покупок: " + list.size());
+          else {
+//            System.out.println("Из списка удален:00000 " + variable);
+          }
+//          System.out.println("Итого в списке покупок: " + list.size());
 
           if (str.equals(variable)) {
-            String gg = String.valueOf(list.indexOf(variable));
             try {
               list.remove(Integer.parseInt(variable));
-              System.out.println("Из списка удален номер: " + variable + " " + variable);
+              System.out.println("Из списка удален номер: " + variable);
               list.remove(variable);
               System.out.println("Итого в списке покупок: " + list.size());
             } catch (NumberFormatException e) {
-
+              for (String s : list) {
+                System.out.println(s);
+              }
             }
           }
         }
