@@ -28,38 +28,36 @@ public class Main {
         case "1" -> {
           System.out.print("Какую покупку вы хотите добавить в список? ");
           String variable = scanner.nextLine();
-          list.add(variable);
-          System.out.print("Итого в списке покупок: " + list.size());
-        }
 
+          if (list.contains(variable)) {
+            System.out.println("Такая покупка уже есть в списке! ");
+          } else {
+            list.add(variable);
+          }
+          System.out.println("Итого в списке покупок: " + list.size());
+
+        }
         case "2" -> {
           System.out.print("Введите что вы хотите удалить из списка? ");
           String variable = scanner.nextLine();
-          String str = String.valueOf(variable);
 
           if (list.remove(variable)) {
-            //    System.out.print("Такого названия нет в списке!\n");
             System.out.println("Из списка удален: " + variable);
-          }
-          else {
-//            System.out.println("Из списка удален:00000 " + variable);
-          }
-//          System.out.println("Итого в списке покупок: " + list.size());
-
-          if (str.equals(variable)) {
+            System.out.println("Итого в списке покупок: " + list.size());
+          } else {
             try {
-              list.remove(Integer.parseInt(variable));
-              System.out.println("Из списка удален номер: " + variable);
-              list.remove(variable);
-              System.out.println("Итого в списке покупок: " + list.size());
-            } catch (NumberFormatException e) {
-              for (String s : list) {
-                System.out.println(s);
+              if (Integer.parseInt(variable) >= list.size() + 1 || Integer.parseInt(variable) < 1) {
+
+                System.out.println("Нет такого номера!");
+                continue;
               }
+              list.remove(Integer.parseInt(variable) - 1);
+              System.out.println("Из списка удален номер: " + variable);
+            } catch (NumberFormatException e) {
+              System.out.println("Нет такого товара!");
             }
           }
         }
-
         case "3" -> {
           System.out.print("поиск по списку: ");
           String variable = scanner.nextLine();
