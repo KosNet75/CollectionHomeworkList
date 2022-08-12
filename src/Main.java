@@ -1,11 +1,12 @@
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
 public class Main {
 
-  public static void main(String[] args) {
+  public static <Integernt> void main(String[] args) {
 
     List<String> list = new ArrayList<>();
     Scanner scanner = new Scanner(System.in);
@@ -31,17 +32,32 @@ public class Main {
           list.add(variable);
           System.out.print("Итого в списке покупок: " + list.size());
         }
+
         case "2" -> {
           System.out.print("Введите что вы хотите удалить из списка? ");
           String variable = scanner.nextLine();
+          String str = String.valueOf(variable);
 
           if (!list.remove(variable)) {
             System.out.print("Такого названия нет в списке!\n");
-          } else {
+          } else
             System.out.println("Из списка удален: " + variable);
-          }
-          System.out.println("Итого в списке покупок: " + list.size());
+            System.out.println("Итого в списке покупок: " + list.size());
+
+             if (str.equals(variable)) {
+               String gg = String.valueOf(list.indexOf(variable));
+               try {
+               list.remove(Integer.parseInt(variable));
+               System.out.println("Из списка удален номер: " + variable + " " + variable);
+               list.remove(variable);
+               System.out.println("Итого в списке покупок: " + list.size());
+               }
+               catch (NumberFormatException e) {
+                 continue;
+               }
+             }
         }
+
         case "3" -> {
           System.out.print("поиск по списку: ");
           String variable = scanner.nextLine();
@@ -54,12 +70,14 @@ public class Main {
             }
           }
         }
+
         case "4" -> {
           System.out.println("Ваш список: " + list.size());
           for (String s : list) {
-            System.out.println(s);
+            System.out.println((list.indexOf(s)+1) + ". " + s);
           }
         }
+
         case "5" -> {
           System.out.print("Отключение!");
           System.exit(0);
