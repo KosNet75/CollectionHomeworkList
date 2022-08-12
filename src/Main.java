@@ -53,7 +53,7 @@ public class Main {
                System.out.println("Итого в списке покупок: " + list.size());
                }
                catch (NumberFormatException e) {
-                 continue;
+
                }
              }
         }
